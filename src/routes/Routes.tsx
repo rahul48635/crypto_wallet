@@ -5,10 +5,9 @@ import BlogPage from "../pages/BlogPage";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import { CryptoLayout } from "../components/CryptoLayout";
-
+import LearnMore from "../pages/learnmore"; // Add this import
 
 const Routes = () => {
-
   const routes: RouteObject[] = [
     {
       path: "/",
@@ -38,10 +37,18 @@ const Routes = () => {
       path: "/blogs/:blogId",
       element: (
         <Layout>
-            <BlogPreview />
+          <BlogPreview />
         </Layout>
       ),
-    
+    },
+    // Add the new LearnMore route
+    {
+      path: "/learn-more",
+      element: (
+        <Layout>
+          <LearnMore />
+        </Layout>
+      ),
     },
     {
       path: "*",
@@ -57,25 +64,3 @@ const Routes = () => {
 };
 
 export default Routes;
-
-// import { JSX } from "react";
-// import { EthWallet } from "../components/eth_wallet";
-// import useMnemonicCall from "../components/mnemonic";
-
-// export interface RouteType {
-//   path: string;
-//   element: JSX.Element;
-//   isPrivate?: boolean;  // for future protected routes
-// }
-
-// const { mnemonic }: { mnemonic: string } = useMnemonicCall();
-
-// const routes: RouteType[] = [
-//   {
-//     path: "/",
-//     element: <EthWallet mnemonic={mnemonic}/>,
-//   },
-
-// ];
-
-// export default routes;

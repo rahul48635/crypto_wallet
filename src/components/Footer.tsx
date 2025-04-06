@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">CryptoWallet</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">Spell Chain</h3>
             <p className="text-sm">
               Secure, reliable, and user-friendly crypto wallet for the modern web3 world.
             </p>
@@ -99,7 +99,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-12 pt-8">
           <p className="text-sm text-center">
-            © {new Date().getFullYear()} CryptoWallet. All rights reserved.
+            © {new Date().getFullYear()} Spell Chain. All rights reserved.
           </p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect } from "react";
 import Navbar from "./navbar/Navbar";
 import Footer from "./Footer";
+import CustomCursor from "./navbar/cursor";
 
 interface LayoutProps {
   children: ReactNode;
@@ -43,6 +44,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="w-full flex flex-col items-center justify-between min-h-screen overflow-hidden">
+      <CustomCursor />
       <Navbar />
       {children}
       <Footer />
@@ -51,4 +53,3 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 };
 
 export default Layout;
-

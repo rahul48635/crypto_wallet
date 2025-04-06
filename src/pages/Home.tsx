@@ -1,19 +1,17 @@
-"use client"
-
+// Crypto Wallet Home Page
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom" // Add useNavigate import
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   TrendingUp,
   Shield,
   Zap,
-  Wallet,
-  
+  Wand2,
   EclipseIcon as Ethereum,
 } from "lucide-react"
 
 const cryptoData = [
-  
   {
     id: "ethereum",
     name: "Ethereum",
@@ -39,6 +37,7 @@ const cryptoData = [
 ]
 
 export default function HomePage() {
+  const navigate = useNavigate() // Move inside the component
   const [currentTime, setCurrentTime] = useState(new Date())
 
   useEffect(() => {
@@ -46,15 +45,12 @@ export default function HomePage() {
       setCurrentTime(new Date())
     }, 1000)
 
-
     return () => clearInterval(timer)
   }, [])
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  
   }, [])
-  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100">
@@ -84,9 +80,12 @@ export default function HomePage() {
                   <span>Go to Wallet</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <button className="px-6 py-3 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 font-medium transition-colors">
-                  Learn More
-                </button>
+                <button 
+  onClick={() => navigate('/learn-more')}
+  className="px-6 py-3 rounded-lg border border-white/30 hover:bg-white/10 font-medium transition-colors"
+>
+  Learn More
+</button>
               </div>
             </div>
             <div className="relative">
@@ -242,52 +241,55 @@ export default function HomePage() {
                   <span>Go to Wallet</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <button className="px-6 py-3 rounded-lg border border-white/30 hover:bg-white/10 font-medium transition-colors">
-                  Learn More
-                </button>
+                <button 
+  onClick={() => navigate('/learn-more')}
+  className="px-6 py-3 rounded-lg border border-white/30 hover:bg-white/10 font-medium transition-colors"
+>
+  Learn More
+</button>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-        <div className="container mx-auto px-4 py-8">
+     {/* Enhanced footer with magical seal */}
+     <footer className="border-t border-gray-200/50 dark:border-gray-800/50 pt-12 pb-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                <Wallet className="w-4 h-4 text-white" />
+            <div className="flex items-center space-x-3 mb-6 md:mb-0">
+              <motion.div 
+                whileHover={{ rotate: 15, scale: 1.1 }}
+                className="p-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg"
+              >
+                <Wand2 className="w-5 h-5" />
+              </motion.div>
+              <div>
+                <span className="text-lg font-bold">SpellChain</span>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                  The Decentralized Magic Ledger
+                </p>
               </div>
-              <span className="text-lg font-bold">CryptoVault</span>
             </div>
-
-            <div className="flex space-x-6">
-              <a
-                href="#"
-                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                Terms
-              </a>
-              <a
-                href="#"
-                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                Privacy
-              </a>
-              <a
-                href="#"
-                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                Support
-              </a>
+            
+            {/* Magical seal */}
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              className="relative w-16 h-16 mb-6 md:mb-0"
+            >
+              <div className="absolute inset-0 rounded-full border-2 border-purple-600/30 animate-pulse"></div>
+              <div className="absolute inset-2 rounded-full border-2 border-blue-600/30 animate-pulse" style={{ animationDelay: "0.5s" }}></div>
+              <div className="absolute inset-4 rounded-full border-2 border-indigo-600/30 animate-pulse" style={{ animationDelay: "1s" }}></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Wand2 className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+              </div>
+            </motion.div>
+            
+            <div className="text-sm text-gray-500 dark:text-gray-400 text-center md:text-right">
+              © {new Date().getFullYear()} SpellChain. All rights reserved.<br />
+              <span className="text-xs opacity-70">Protected by ancient encryption spells</span>
             </div>
           </div>
-
-          <div className="mt-6 text-center md:text-left text-sm text-gray-500 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} CryptoVault. All rights reserved.
-          </div>
-        </div>
-      </footer>
+        </footer>
     </div>
   )
 }
